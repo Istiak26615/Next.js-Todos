@@ -1,7 +1,6 @@
 import Navbar from '@/Components/Navbar/Page'
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Footer from '@/Components/Footer/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,7 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   // const navMenu= ["Home", "About", "Services", "Contact"]
-  const navMenu=[{"name":"Home", "link":"/"}, {"name":"About", "link":"/about"}, {"name":"Services", "link":"/services"}, {"name":"Contact", "link":"/contact"}]
+  const navMenu=[{"name":"Dashboard", "link":"/"}, {"name":"Team", "link":"/team"}, {"name":"Project", "link":"/project"}, {"name":"Calender", "link":"/calender"}]
   return (
     <html lang="en">
       
@@ -20,7 +19,7 @@ export default function RootLayout({ children }) {
       
       <Navbar navMenu={navMenu}/>
       <div>{children}</div>
-      <Footer/>
+      
       </body>
     </html>
   )

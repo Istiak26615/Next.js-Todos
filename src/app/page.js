@@ -1,5 +1,5 @@
 
-
+import ProductList from "@/Components/ProductList/Page"
 
 export default function Home() {
 
@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       
     <main>
-      
+      <ProductList/>
     </main>
     </div>
   )

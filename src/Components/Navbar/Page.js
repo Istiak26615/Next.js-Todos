@@ -18,28 +18,29 @@ function Navbar(props) {
   
   const toggleModal = () => {
     setIsSendClicked(!isSendClicked);
+    console.log("send button clicked")
   };
   const toggleMobileNav = () => {
     setIsMobileNavClicked(!isMobileNavClicked);    
   };
 
-  const handleClickOutside = (event) => {
-    if (divRef.current && !divRef.current.contains(event.target)) {
-      setIsDrawerOpen(false);
-    }
-  };
+  // const handleClickOutside = (event) => {
+  //   if (!divRef.current.contains(event.target)) {
+  //     setIsDrawerOpen(false);
+  //   }
+  // };
   const handleClickOutsideForSendClicked = (event) => {
     if (divRef.current && !divRef.current.contains(event.target)) {
-      setIsSendClicked(false);
+       setIsSendClicked(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
+    //  document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('mousedown', handleClickOutsideForSendClicked);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      //  document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('mousedown', handleClickOutsideForSendClicked);
     };
   }, []);
@@ -67,9 +68,9 @@ function Navbar(props) {
                           <p
                             className={`${
                               searchParams === menu.link
-                                ? "border-b-4 border-zinc-950"
+                                ? "border-b-4 border-zinc-950 text-zinc-800"
                                 : ""
-                            } text-black px-3 py-5 text-sm font-medium`}
+                            } text-zinc-400 px-3 py-5 text-sm font-medium`}
                           >
                             <Link href={menu.link}>{menu.name}</Link>
                           </p>
@@ -167,14 +168,18 @@ function Navbar(props) {
                           />
                         </div>
                         <div>
-                          <button onClick={()=>{toggleDrawer()
-                          toggleModal()}} className="my-3 px-2 py-2 bg-black text-white rounded-md focus:outline-none ">
+                          <button 
+                          onClick={()=>
+                            {
+                             toggleDrawer();
+                          toggleModal()
+                          }} className="my-3 px-2 py-2 bg-black text-white rounded-md focus:outline-none ">
                             Send
                           </button>
                         </div>
                       </div>
                     </div>
-
+                    
                     <div
                       class={`absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${
                         isSendClicked ? "block" : "hidden"

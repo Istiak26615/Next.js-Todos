@@ -36,8 +36,8 @@ function Page(props) {
 
       {/* Button (Conditional Rendering) */}
       {isHovered && (
-        <button className="bg-grey-500 text-black px-2 py-1 rounded-full hover:bg-grey-500 text-zinc-950 transition-colors">
-          Button
+        <button className="bg-blue-500 text-white px-2 py-1 rounded-full hover:bg-blue-500 text-white transition-colors">
+          Buy
         </button>
       )}
     </div>

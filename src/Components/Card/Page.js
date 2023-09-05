@@ -48,8 +48,8 @@ function Page(props) {
       {/* Centered Button (Conditional Rendering) */}
       {isHovered && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <button className="bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition-colors">
-            Button
+          <button className="bg-violet-700 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition-colors">
+            Buy Now
           </button>
         </div>
       )}

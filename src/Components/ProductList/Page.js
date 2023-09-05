@@ -131,8 +131,8 @@ const sortDataByNameDescending = () => {
             </span>
           </label>{" "}
         </div>
-        <div>
-        <div className="relative inline-block text-left">
+        <div className="flex flex-col sm:flex-row items-center">
+        <div className="relative inline-block text-left p-2">
           <div className="">
             <button
               type="button"
@@ -190,7 +190,7 @@ const sortDataByNameDescending = () => {
           {/* Sorting options */}
         </div>
 
-        <div className="relative inline-block text-left">
+        <div className="relative inline-block text-left p-2">
           <div className="">
 
             <button

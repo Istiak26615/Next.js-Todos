@@ -18,13 +18,11 @@ function Page() {
   
 
   const handleSortOptionChange = (option) => {
-    console.log("Sorting option selected:", option);
     setSelectedOption(option);
     setSortOrder(null);
   };
 
   const handleSortOrderChange = (order) => {
-    console.log("Sorting order selected:", order);
     setSortOrder(order);
   };
 
@@ -45,7 +43,6 @@ function Page() {
     );
 
     setAllProducts(data);
-    console.log("data", data);
   }
   async function getDescData() {
     const data = await fetch(
@@ -53,7 +50,6 @@ function Page() {
     ).then((res) => res.json());
 
     setAllProducts(data);
-    console.log("data", data);
     if (data) {
       toggleDrawer();
     }
@@ -65,7 +61,6 @@ function Page() {
 
    
     setAllProducts(data);
-    console.log("data", data);
     if (data) {
       toggleDrawer();
     }

@@ -5,7 +5,6 @@ import { useEffect, useState, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 function Navbar(props) {
-  console.log(props);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isSendClicked, setIsSendClicked] = useState(false);
   const [isMobileNavClicked, setIsMobileNavClicked] = useState(false);
@@ -18,7 +17,6 @@ function Navbar(props) {
   
   const toggleModal = () => {
     setIsSendClicked(!isSendClicked);
-    console.log("send button clicked")
   };
   const toggleMobileNav = () => {
     setIsMobileNavClicked(!isMobileNavClicked);    

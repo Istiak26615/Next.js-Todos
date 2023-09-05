@@ -15,6 +15,7 @@ function Page() {
 
   const [selectedOption, setSelectedOption] = useState(null);
   const [sortOrder, setSortOrder] = useState(null);
+  
 
   const handleSortOptionChange = (option) => {
     console.log("Sorting option selected:", option);
@@ -62,26 +63,49 @@ function Page() {
       (res) => res.json()
     );
 
-    // Function to sort data by name in ascending order
-  const sortDataByNameAscending = () => {
-    const sortedData = [...allProducts];
-    sortedData.sort((a, b) => a.name.localeCompare(b.name));
-    setAllProducts(sortedData);
-  };
-
-  // Function to sort data by name in descending order
-  const sortDataByNameDescending = () => {
-    const sortedData = [...allProducts];
-    sortedData.sort((a, b) => b.name.localeCompare(a.name));
-    setAllProducts(sortedData);
-  };
-
+   
     setAllProducts(data);
     console.log("data", data);
     if (data) {
       toggleDrawer();
     }
   }
+
+// Function to sort data by name in ascending order
+const sortDataByNameAscending = () => {
+  if (allProducts) {
+    
+    const sortedData = [...allProducts];
+    sortedData.sort((a, b) => {
+      if (a.title && b.title) {
+        return a.title.localeCompare(b.title);
+      } else {
+        return 0; // Handle cases where a.name or b.name is undefined
+      }
+    });
+    setAllProducts(sortedData);
+    toggleSortName()
+  }
+};
+
+// Function to sort data by name in descending order
+const sortDataByNameDescending = () => {
+  if (allProducts) {
+    
+    const sortedData = [...allProducts];
+    sortedData.sort((a, b) => {
+      if (a.title && b.title) {
+        return b.title.localeCompare(a.title);
+      } else {
+        return 0; // Handle cases where a.name or b.name is undefined
+      }
+    });
+    setAllProducts(sortedData);
+    toggleSortName()
+  }
+};
+
+
 
   useEffect(() => {
     getData();
@@ -168,7 +192,6 @@ function Page() {
 
         <div className="relative inline-block text-left">
           <div className="">
-          
 
             <button
               type="button"
@@ -208,9 +231,7 @@ function Page() {
                 Ascending
               </button>
               <button
-                onClick={() => {
-                  sortDataByNameDescending();
-                }}
+                onClick={()=>{sortDataByNameDescending()}}
                 className={`${
                   isDrawerOpen === "price" ? "bg-white" : ""
                 } block px-4 py-2 text-sm text-gray-700 bg-white w-full text-left mb-8`}
@@ -229,10 +250,10 @@ function Page() {
         {" "}
         {/* {ascProducts?<ListView allProducts={ascProducts} />
         :<>{desProducts?<ListView allProducts={desProducts} />: <ListView allProducts={allProducts} />}</>} */}
-        <ListView allProducts={allProducts} />
+        <ListView allProducts={allProducts} itemsPerPage={10}/>
       </div>
       <div className={`text-black ${listView ? "hidden" : "block"}`}>
-        <CardView allProducts={allProducts} />
+        <CardView allProducts={allProducts} itemsPerPage={10}/>
       </div>
     </div>
   );

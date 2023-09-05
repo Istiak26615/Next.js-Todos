@@ -11,11 +11,17 @@ function Page(props) {
     setIsHovered(false);
   };
 
+  const productImageClasses = `w-16 h-16 object-cover rounded-full ${
+    isHovered ? 'transform scale-110 transition-transform' : ''
+  }`;
+
+  const containerClasses = `flex items-center space-x-4 p-2 ${
+    isHovered ? 'opacity-50' : ''
+  }`;
+
   return (
     <div
-      className={`flex items-center space-x-4 p-2 ${
-        isHovered ? 'opacity-50' : ''
-      }`}
+      className={containerClasses}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -23,9 +29,7 @@ function Page(props) {
       <img
         src={props.item.image}
         alt="Product"
-        className={`w-16 h-16 object-cover rounded-full ${
-          isHovered ? 'transform scale-110 transition-transform' : ''
-        }`}
+        className={productImageClasses}
       />
 
       {/* Title */}

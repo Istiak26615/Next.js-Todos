@@ -6,6 +6,7 @@ import CardView from "@/Components/CardView/Page";
 
 function Page() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isSortNameDrawerOpen, setIsSortNameDrawerOpen] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [ascProducts, setAscProducts] = useState([]);
   const [desProducts, setDesProducts] = useState([]);
@@ -31,6 +32,9 @@ function Page() {
   };
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
+  };
+  const toggleSortName = () => {
+    setIsSortNameDrawerOpen(!isSortNameDrawerOpen);
   };
 
   // get products
@@ -103,6 +107,7 @@ function Page() {
             </span>
           </label>{" "}
         </div>
+        <div>
         <div className="relative inline-block text-left">
           <div className="">
             <button
@@ -116,16 +121,7 @@ function Page() {
               Sorting by Price
             </button>
 
-            <button
-              type="button"
-              onClick={toggleDrawer}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-2"
-              id="options-menu"
-              aria-haspopup="true"
-              aria-expanded="true"
-            >
-              Sorting by Name
-            </button>
+            
           </div>
 
           {/* Dropdown menu */}
@@ -165,10 +161,32 @@ function Page() {
               </button>
             </div>
           </div>
+          
+
+          {/* Sorting options */}
+        </div>
+
+        <div className="relative inline-block text-left">
+          <div className="">
+          
+
+            <button
+              type="button"
+              onClick={toggleSortName}
+              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-2"
+              id="options-menu"
+              aria-haspopup="true"
+              aria-expanded="true"
+            >
+              Sorting by Name
+            </button>
+          </div>
+
+          
           {/* Dropdown menu for name*/}
           <div
             className={`${
-              isDrawerOpen ? "block" : "hidden"
+              isSortNameDrawerOpen ? "block" : "hidden"
             } origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 mb-8 z-50`}
             onClick={(e) => e.stopPropagation()}
           >
@@ -204,6 +222,7 @@ function Page() {
           </div>
 
           {/* Sorting options */}
+        </div>
         </div>
       </div>
       <div className={`text-black ${listView ? "block" : "hidden"} w-full`}>
